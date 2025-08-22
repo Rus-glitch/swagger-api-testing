@@ -7,4 +7,6 @@
 
 Здесь представлены:  
 - [Тест-кейсы](/test_docs/tc.pdf)
+
 ![TC](/test_docs/tc.pdf)
+![TC](/test_docs/keks.jpg)
