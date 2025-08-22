@@ -13,3 +13,11 @@
 ## 3. Артефакты проекта
 - [Коллекция Postman (JSON)](/postman_collection/postman_collection.md)
 - 
+
+
+## . Контакты
+
+**ФИО:** Гадельшин Руслан Юсупович  
+**Должность:** QA Engineer  
+**GitHub:** [https://github.com/Rus-glitch](https://github.com/Rus-glitch)  
+**LinkedIn:** [https://www.linkedin.com/in/ruslan-gadelsh](https://www.linkedin.com/in/ruslan-gadelsh)  
