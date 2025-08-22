@@ -1,0 +1,788 @@
+{
+	"info": {
+		"_postman_id": "70cf7ec7-c325-4ec3-a0ba-7c34dff6e540",
+		"name": "PetStore Swagger Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43456153"
+	},
+	"item": [
+		{
+			"name": "Positive tests",
+			"item": [
+				{
+					"name": "200 ОК; Add new pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка правильности тела\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(3228);\r",
+									"    pm.expect(jsonData.name).to.eql(\"Bulldog\");\r",
+									"    pm.expect(jsonData.status).to.eql(\"available\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка структуры и типов данных\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"\r",
+									"    // Проверка наличия ключей\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData).to.have.property(\"status\");\r",
+									"    pm.expect(jsonData).to.have.property(\"tags\");\r",
+									"    pm.expect(jsonData).to.have.property(\"category\");\r",
+									"    pm.expect(jsonData).to.have.property(\"photoUrls\");\r",
+									"\r",
+									"    // Типы данных верхнего уровня\r",
+									"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.name).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.tags).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.photoUrls).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.category).to.be.an(\"object\");\r",
+									"\r",
+									"    // Проверка вложенного объекта category\r",
+									"    pm.expect(jsonData.category).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData.category).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData.category.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.category.name).to.be.a(\"string\");\r",
+									"\r",
+									"    // Проверка массива tags (если есть)\r",
+									"    if (jsonData.tags.length > 0) {\r",
+									"        pm.expect(jsonData.tags[0]).to.have.property(\"id\");\r",
+									"        pm.expect(jsonData.tags[0]).to.have.property(\"name\");\r",
+									"        pm.expect(jsonData.tags[0].id).to.be.a(\"number\");\r",
+									"        pm.expect(jsonData.tags[0].name).to.be.a(\"string\");\r",
+									"    }\r",
+									"\r",
+									"    // Проверка массива photoUrls\r",
+									"    if (jsonData.photoUrls.length > 0) {\r",
+									"        pm.expect(jsonData.photoUrls[0]).to.be.a(\"string\");\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 3228,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "200 OK; Find pet by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка правильности тела\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(3228);\r",
+									"    pm.expect(jsonData.name).to.eql(\"Bulldog\");\r",
+									"    pm.expect(jsonData.status).to.eql(\"available\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка структуры и типов данных\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"\r",
+									"    // Проверка наличия ключей\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData).to.have.property(\"status\");\r",
+									"    pm.expect(jsonData).to.have.property(\"tags\");\r",
+									"    pm.expect(jsonData).to.have.property(\"category\");\r",
+									"    pm.expect(jsonData).to.have.property(\"photoUrls\");\r",
+									"\r",
+									"    // Типы данных верхнего уровня\r",
+									"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.name).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.tags).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.photoUrls).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.category).to.be.an(\"object\");\r",
+									"\r",
+									"    // Проверка вложенного объекта category\r",
+									"    pm.expect(jsonData.category).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData.category).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData.category.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.category.name).to.be.a(\"string\");\r",
+									"\r",
+									"    // Проверка массива tags (если есть)\r",
+									"    if (jsonData.tags.length > 0) {\r",
+									"        pm.expect(jsonData.tags[0]).to.have.property(\"id\");\r",
+									"        pm.expect(jsonData.tags[0]).to.have.property(\"name\");\r",
+									"        pm.expect(jsonData.tags[0].id).to.be.a(\"number\");\r",
+									"        pm.expect(jsonData.tags[0].name).to.be.a(\"string\");\r",
+									"    }\r",
+									"\r",
+									"    // Проверка массива photoUrls\r",
+									"    if (jsonData.photoUrls.length > 0) {\r",
+									"        pm.expect(jsonData.photoUrls[0]).to.be.a(\"string\");\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/3228",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"3228"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "200 OK; Find pet by Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// ✅ Проверка, что запрос успешно отработал\r",
+									"pm.test(\"Ответ получен\", function () {\r",
+									"    pm.response.to.not.be.error;\r",
+									"    pm.response.to.have.status(200); // Ожидаемый статус-код 200\r",
+									"});\r",
+									"\r",
+									"// ✅ Проверка, что код состояния ответа — 200 OK\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Проверка, что тело ответа является массивом\r",
+									"pm.test(\"Тело ответа — массив\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"// ✅ Проверка структуры каждого объекта внутри массива\r",
+									"pm.test(\"Проверка структуры объектов в ответе\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"\r",
+									"    jsonData.forEach(function (pet) {\r",
+									"        // Проверка, что есть ключи id, name, status\r",
+									"        pm.expect(pet).to.have.property(\"id\");\r",
+									"        pm.expect(pet).to.have.property(\"name\");\r",
+									"        pm.expect(pet).to.have.property(\"status\");\r",
+									"\r",
+									"        // Проверка типов данных\r",
+									"        pm.expect(pet.id).to.be.a(\"number\");\r",
+									"        pm.expect(pet.name).to.be.a(\"string\");\r",
+									"        pm.expect(pet.status).to.be.a(\"string\");\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=pending&status=sold",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available"
+								},
+								{
+									"key": "status",
+									"value": "pending"
+								},
+								{
+									"key": "status",
+									"value": "sold"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "200 OK; Update an existing pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка правильности тела\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(3228);\r",
+									"    pm.expect(jsonData.name).to.eql(\"Bulldog\");\r",
+									"    pm.expect(jsonData.status).to.eql(\"sold\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка структуры и типов данных\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"\r",
+									"    // Проверка наличия ключей\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData).to.have.property(\"status\");\r",
+									"    pm.expect(jsonData).to.have.property(\"tags\");\r",
+									"    pm.expect(jsonData).to.have.property(\"category\");\r",
+									"    pm.expect(jsonData).to.have.property(\"photoUrls\");\r",
+									"\r",
+									"    // Типы данных верхнего уровня\r",
+									"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.name).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.tags).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.photoUrls).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.category).to.be.an(\"object\");\r",
+									"\r",
+									"    // Проверка вложенного объекта category\r",
+									"    pm.expect(jsonData.category).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData.category).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData.category.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.category.name).to.be.a(\"string\");\r",
+									"\r",
+									"    // Проверка массива tags (если есть)\r",
+									"    if (jsonData.tags.length > 0) {\r",
+									"        pm.expect(jsonData.tags[0]).to.have.property(\"id\");\r",
+									"        pm.expect(jsonData.tags[0]).to.have.property(\"name\");\r",
+									"        pm.expect(jsonData.tags[0].id).to.be.a(\"number\");\r",
+									"        pm.expect(jsonData.tags[0].name).to.be.a(\"string\");\r",
+									"    }\r",
+									"\r",
+									"    // Проверка массива photoUrls\r",
+									"    if (jsonData.photoUrls.length > 0) {\r",
+									"        pm.expect(jsonData.photoUrls[0]).to.be.a(\"string\");\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 3228,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"sold\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{based_URL}}/pet",
+							"host": [
+								"{{based_URL}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "200 OK; Delete an existing pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Проверка, что DELETE вернул 200 или 204\r",
+									"pm.test(\"DELETE successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"// Отправим повторный GET-запрос на этот же ресурс\r",
+									"pm.sendRequest({\r",
+									"    url: pm.environment.get(\"based_url2\") + \"/pets/123\",\r",
+									"    method: 'GET'\r",
+									"}, function (err, res) {\r",
+									"    pm.test(\"Питомец больше не существует\", function () {\r",
+									"        // Обычно API возвращает 404 Not Found, если объект удален\r",
+									"        pm.expect(res.code).to.eql(404);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{based_URL}}/pet/10",
+							"host": [
+								"{{based_URL}}"
+							],
+							"path": [
+								"pet",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative Tests",
+			"item": [
+				{
+					"name": "405; Add a new pet with wrong method",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 10,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "415; Find pet by ID with wrong Method (POST)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/10",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "405; Update pet with wrong method (GET)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"id\": 10,\r\n\r\n\"category\": {\r\n\r\n\"id\": 1,\r\n\r\n\"name\": \"animal\"\r\n\r\n},\r\n\r\n\"name\": \"Bulldog\",\r\n\r\n\"photoUrls\": [\r\n\r\n\"https://site.com/bulldog/photo\"\r\n\r\n],\r\n\r\n\"tags\": [\r\n\r\n{\r\n\r\n\"id\": 1,\r\n\r\n\"name\": \"#dog\"\r\n\r\n}\r\n\r\n],\r\n\r\n\"status\": \"sold\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{based_url2}}/pet",
+							"host": [
+								"{{based_url2}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "404; Add new pet with wrong endpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 10,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet2",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "404; Find pet by ID with wrong",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400; Add new pet with wrong app in header",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 10,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400; Add new pet without headers",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true,
+							"host": true,
+							"content-length": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 10,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400; Add new pet Copy with non correct values and keys",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id1\": 10,\r\n\"category\": {\r\n\"id1\": 4,\r\n\"name1\": \"doooog\"\r\n},\r\n\"name1\": \"caaaat\",\r\n\"photoUrls1\": [\r\nnull\r\n],\r\n\"tags1\": [\r\n{\r\n\"id1\": 0,\r\n\"name1\": \"asd\"\r\n}\r\n],\r\n\"status1\": \"Solda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400; Add new pet; cheking ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 0,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"animal\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400; Add new pet; min/max",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": 10,\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"1\"\r\n},\r\n\"name\": \"Bulldog\",\r\n\"photoUrls\": [\r\n\"https://site.com/bulldog/photo\"\r\n],\r\n\"tags\": [\r\n{\r\n\"id\": 1,\r\n\"name\": \"#dog\"\r\n}\r\n],\r\n\"status\": \"A1!b2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
