@@ -14,9 +14,9 @@
 - [Коллекция Postman (JSON)](/postman_collection/postman_collection.md)
 - [Тестовая документация (TestIt)](/test_docs/test_docs.md)
 - [Оформленные баг-репорты (Jira)](/bugs/br-api.md)
+- [Предложения по улучшению (Jira)](/improvement/improvement-suggestions.md)
 
 ## . Контакты
-
 **ФИО:** Гадельшин Руслан Юсупович  
 **Должность:** QA Engineer  
 **GitHub:** [https://github.com/Rus-glitch](https://github.com/Rus-glitch)  
