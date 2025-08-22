@@ -13,7 +13,7 @@
 ## 3. Артефакты проекта
 - [Коллекция Postman (JSON)](/postman_collection/postman_collection.md)
 - [Тестовая документация (TestIt)](/test_docs/test_docs.md)
-- [Оформленные баг-репорты (Jira)]()
+- [Оформленные баг-репорты (Jira)](/bugs/br-api.md)
 
 ## . Контакты
 
