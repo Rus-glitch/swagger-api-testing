@@ -19,11 +19,11 @@
 
 ## Оформленное улучшение (Скриншот из Jira):  
 
-
+![IMPR-J](/improvement/1.png)
 
 ## Приложение (Скриншот из Postman):  
 
-![Screen](/improvement/s1.png)
+
 
 ---
 
