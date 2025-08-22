@@ -22,9 +22,13 @@
 
 ![Bug1-J](/bugs/1.2.png)
 
+## Спецификация (Swagger):  
+
+![Bug1-R](/bugs/s2.1.png)
+
 ## Приложение (реальный баг на сайте):  
 
-![Bug1-R](/bugs/s1.png)  
+![Bug1-R](/bugs/s1.1.png) 
 
 ---
 
