@@ -14,7 +14,11 @@
 
 ## Ключевые запросы (скриншоты):
 
-### Метод POST - add new pet  
+### 1. Метод POST - add new pet:
 
 ![POST](/postman_collection/screenshots/POST.png)  
+
+### 2. Метод GET - find pet by ID:
+
+![GET](/postman_collection/screenshots/GET.png) 
 
