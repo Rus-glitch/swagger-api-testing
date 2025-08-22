@@ -18,7 +18,28 @@
 
 ![POST](/postman_collection/screenshots/POST.png)  
 
+---
+
 ### 2. Метод GET - find pet by ID:
 
 ![GET](/postman_collection/screenshots/GET.png) 
+
+---
+
+### 3. Метод PUT - Update an existing pet:
+
+![GET](/postman_collection/screenshots/PUT.png) 
+
+---
+
+### 5. Метод DEL - Delete an existing pet:
+
+![GET](/postman_collection/screenshots/DEL.png) 
+
+---
+
+### 6. Метод GET №2 - Find pet by Status:
+
+![GET](/postman_collection/screenshots/GET(2).png) 
+
 
