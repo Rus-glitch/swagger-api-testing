@@ -6,7 +6,7 @@
 
 
 Здесь представлены:  
-- [Тест-кейсы](/test_docs/tc.pdf)
+- [Тест-кейсы](/test_docs/tc-all.pdf)
+- Пример оформленного тест-кейса в формате TestIT
 
-![TC](/test_docs/tc.pdf)
-![TC](/test_docs/keks.jpg)
+![TC](/test_docs/example.png)
