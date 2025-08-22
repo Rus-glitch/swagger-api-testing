@@ -15,9 +15,9 @@ Swagger Petstore — учебный API для работы с товарами 
 **Навыки, отработанные на проекте:** API-тестирование, работа с Postman, составление тест-кейсов и чек-листов, оформление баг-репортов, аналитическое мышление, рекомендации по улучшению API.
 
 ## 3. Артефакты проекта
-- [Коллекция Postman (JSON)](/postman_collection/postman_collection.md)
-- [Тестовая документация (TestIt)](/test_docs/test_docs.md)
-- [Оформленные баг-репорты (Jira)](/bugs/br-api.md)
+- [Коллекция Postman ](/postman_collection/postman_collection.md)
+- [Тестовая документация (TestIt, тест-кейсы и чек-листы)](/test_docs/test_docs.md)
+- [Оформленные баг-репорты (Jira, примеры найденных дефектов)](/bugs/br-api.md)
 - [Предложения по улучшению (Jira)](/improvement/improvement-suggestions.md)
 
 ## 4. Инструменты
@@ -33,3 +33,4 @@ Swagger Petstore — учебный API для работы с товарами 
 **Должность:** QA Engineer  
 **GitHub:** [https://github.com/Rus-glitch](https://github.com/Rus-glitch)  
 **LinkedIn:** [https://www.linkedin.com/in/ruslan-gadelsh](https://www.linkedin.com/in/ruslan-gadelsh)  
+**Email:** rus3002@mail.ru
