@@ -11,4 +11,5 @@
 - Подготовлены артефакты для демонстрации процесса тестирования API.
 
 ## 3. Артефакты проекта
-- [Коллекция Postman (JSON)](postman_collection/petstore_swagger_practice.postman_collection.json)
+- [Коллекция Postman (JSON)](/postman_collection/postman_collection.md)
+- 
